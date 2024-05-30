@@ -8,6 +8,7 @@ const Input = ({showIcon}) => {
             <input type="text" className="Input"/>
             {showIcon ? <IoEye size="34px" color="#44B26F" className='eye'/> : null}
         </label>
+        
     )
 }
 
