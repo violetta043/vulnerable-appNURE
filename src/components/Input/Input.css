@@ -1,0 +1,13 @@
+.Input {
+    border: none;
+    height: 56px;
+    width: 277px;
+    background-color: #D9D9D9;
+    
+}
+
+.eye {
+    position: absolute;
+    right: 109px;
+    top: 14px;
+}
