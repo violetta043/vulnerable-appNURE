@@ -1,0 +1,15 @@
+.ProductTable{
+    height: 100vh;
+    background-color: #44B26F;
+}
+
+.Product-logo {
+    margin-top: 20px;
+    margin-left: 29px;
+}
+
+.Product-button {
+    display: flex;
+    justify-content: space-between;
+    margin: 31px 77px 0 70px; 
+}

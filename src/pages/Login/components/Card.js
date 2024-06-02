@@ -9,12 +9,10 @@ const Card = () => {
             <img src={logo_login} className='Card-logo'/>
 
             <div className="Input-login">
-                <div className='text-login'>User Name</div>
-                <Input />
+                <Input label="User Name"/>
             </div>
             <div className="Input-password">
-                <div className='text-password'>Password </div>
-                <Input showIcon/>
+                <Input label="Password" showIcon/>
             </div>
             <div className='Card-button'>
                 <Button />
