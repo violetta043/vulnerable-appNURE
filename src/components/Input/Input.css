@@ -1,4 +1,5 @@
 .Input {
+    /* position: relative; */
     border: none;
     height: 56px;
     width: 277px;
@@ -11,3 +12,12 @@
     right: 109px;
     top: 14px;
 }
+
+.Text-leble {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #44B26F;
+    font-size: 14px;
+}
+
