@@ -1,8 +1,8 @@
-import './Button.css';
+import './ProductButton.css';
 import { GoPlus } from "react-icons/go";
 import { FaRegUser } from "react-icons/fa6";
 
-const Button = () => {
+const ProductButton = () => {
     return (
         <>
         <button className='Button-prev'>
@@ -23,4 +23,4 @@ const Button = () => {
     
 }
 
-export default Button; 
+export default ProductButton; 
