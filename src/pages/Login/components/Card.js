@@ -12,7 +12,7 @@ const Card = () => {
                 <Input label="User Name"/>
             </div>
             <div className="Input-password">
-                <Input label="Password" showIcon/>
+                <Input label="Password" showIcon  />
             </div>
             <div className='Card-button'>
                 <Button />

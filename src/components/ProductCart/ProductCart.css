@@ -1,0 +1,48 @@
+.Card {
+    height: 376px;
+    width: 273px;
+    background-color: #fff;
+    margin-bottom: 61px;
+}
+
+.lenovo{
+    margin-top: 37px;
+    margin-left: 41px;
+}
+
+.Product-name{
+    color: black;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 27px;
+}
+
+.Wrapper{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 35px;
+}
+.Price{
+    color: #FC5B00;
+    font-size: 24px;
+    font-family: 'Inter'
+}
+.Quantity{
+    color: black;
+    font-size: 17px;
+    padding-top: 5px;
+}
+.Buy-section{
+    position: relative;
+}
+.ShoppingCart{
+    position: absolute;
+    left: 25px;
+}
+.Buy{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #05BC52;
+    font-size: 18px;
+}
