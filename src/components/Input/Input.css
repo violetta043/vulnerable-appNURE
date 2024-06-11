@@ -1,23 +1,41 @@
+.InputContainer, .InputWrapper{
+    position: relative;
+}
+
 .Input {
-    /* position: relative; */
     border: none;
     height: 56px;
     width: 277px;
-    background-color: #D9D9D9;
-    
+    background-color: #d9d9d9a9;
 }
 
-.eye {
+.Text-label {
     position: absolute;
-    right: 109px;
-    top: 14px;
-}
-
-.Text-leble {
-    position: absolute;
-    top: 20px;
+    top: 26px;
     left: 20px;
     color: #44B26F;
     font-size: 14px;
+    transform: translateY(-50%);
+    transition: all 0.2s; /* Плавный переход */
+    pointer-events: none; /* Чтобы клики проходили сквозь label */
+}
+
+.Text-label--hidden {
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    transform: translateY(-100%);
+    color: #a0a0a0; 
+}
+
+.IconButton {
+    position: absolute;
+    right: 109px;
+    top: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 

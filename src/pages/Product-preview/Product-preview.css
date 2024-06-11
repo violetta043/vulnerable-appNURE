@@ -1,0 +1,24 @@
+.ProductPage{
+    height: 100vh;
+    background-color: #05BC52;
+    font-family: 'Inter-Medium' ;
+    
+}
+.Container{
+    max-width: 1149px;
+    margin: 0 auto;
+}
+.Product-logo {
+    margin-top: 20px;
+    margin-left: 29px;
+}
+
+
+.Cards-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 62px;
+    margin-right: 165px; 
+    flex-wrap: wrap;
+    
+}
