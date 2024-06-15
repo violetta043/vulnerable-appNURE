@@ -16,8 +16,8 @@
     color: #44B26F;
     font-size: 14px;
     transform: translateY(-50%);
-    transition: all 0.2s; /* Плавный переход */
-    pointer-events: none; /* Чтобы клики проходили сквозь label */
+    transition: all 0.2s; 
+    pointer-events: none; 
 }
 
 .Text-label--hidden {

@@ -3,29 +3,24 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useState } from 'react';
 
 
-const Input = ({showIcon, label, }) => {
+const Input = ({showIcon, label, name, value, onInputChange}) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false); 
-    const [inputValue, setInputValue] = useState('');
+    // const [inputValue, setInputValue] = useState('');
 
     const handleClick = () => {
         setIsPasswordVisible(prevState => !prevState); 
     }
 
-    const handleChange = (event) => {
-        setInputValue(event.target.value);
-    }
-
     return(
-        
-       
         <div className="InputWrapper">     
                 <input 
                     type={showIcon ? (isPasswordVisible ? "text" : "password") : "text"} 
                     className="Input"
-                    value={inputValue}
-                    onChange={handleChange}
+                    name={name}
+                    value={value}
+                    onChange={(event) => onInputChange(event.target.value)}
                 />
-                <label className={`Text-label ${inputValue !== '' ? 'Text-label--hidden' : ''}`}>
+                <label className={`Text-label ${value !== '' ? 'Text-label--hidden' : ''}`}>
                     {label}
                 </label>
                 {showIcon && (
