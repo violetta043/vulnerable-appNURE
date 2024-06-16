@@ -7,7 +7,7 @@ const ProductCard = ({product}) => {
    
 
     return(
-        <div className="Card">
+        <div className="Product-card">
             <img src={lenovoImg} className='lenovo'/>
             <div className='Product-descr'>
                 <div key={product.id} > 
