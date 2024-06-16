@@ -26,26 +26,33 @@ const Card = () => {
             return null; 
         }
 
-        fetch('http://localhost:3000/login', {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: name,
-                password: password, 
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.token){
-                localStorage.setItem('jwt', data.token);
-                console.log('Login successful and token saved to localStorage')
-            } else {
-                console.log('Login failed:', data.message);
+        async function login(name, password){
+            try {
+                let response = await fetch('http://localhost:3000/login', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    password: password, 
+                })
+                });
+                const data = await response.json();
+                if(data.token){
+                    localStorage.setItem('jwt', data.token);
+                    console.log('Login successful and token saved to localStorage')
+                } else {
+                    console.log('Login failed:', data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
-        })
-        .catch(error => console.error('Error:', error));
+      
+        };
+    login(name, password);
+
+     
     }
     return (
         <div className="Card">
