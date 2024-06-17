@@ -26,7 +26,6 @@ const ProductTable = () => {
             console.error('Error fetching data:', error);
         }
     }
-
     return (
         <div className="ProductTable">
             <img src={logo_product} className='Product-logo'/>
@@ -39,3 +38,4 @@ const ProductTable = () => {
     )
 }
 export default ProductTable; 
+//

@@ -4,7 +4,7 @@ import { FaBoxArchive } from "react-icons/fa6";
 
 
 const Table = ({products}) => {
-      return(
+    return(
         <>
         <h1 className='Table-name'>Products</h1>
         <table border="1" >
