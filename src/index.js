@@ -6,11 +6,13 @@ import Login from './pages/Login/Login';
 import ProductPreview from './pages/Product-preview/Product-preview';
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  
     {/* <Login /> */}
-    <ProductTable />
+    {/* <ProductTable /> */}
     {/* <ProductPreview /> */}
   </React.StrictMode>
 );
