@@ -1,13 +1,19 @@
 import './ProductCart.css';
 import lenovoImg from '../../assets/lenovo.png';
 import { PiShoppingCartLight } from "react-icons/pi";
+import {  useNavigate } from 'react-router-dom';
 
 
 const ProductCard = ({product}) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/product-info/${product.id}`);
+    }
    
 
     return(
-        <div className="Product-card">
+        <div className="Product-card" onClick={handleClick}>
             <img src={lenovoImg} className='lenovo'/>
             <div className='Product-descr'>
                 <div key={product.id} > 
