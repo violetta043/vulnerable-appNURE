@@ -1,9 +1,8 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useEffect } from "react-router-dom";
 import "./Product-info.css";
 import logo_product from "../../assets/logo_products.svg";
 import lenovoImg from "../../assets/lenovo.png";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { FcApproval } from "react-icons/fc";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 
 const ProductInfo = () => {
@@ -18,6 +17,7 @@ const ProductInfo = () => {
   if (!product) {
     return <div>Product not found</div>;
   }
+
 
   return (
     <div className="Product-info">
@@ -45,25 +45,21 @@ const ProductInfo = () => {
 
       <div className="Wrapper-descr">
         <div className="info">
-          <span>15.6-дюймовий дисплей стандарту Full HD</span>
+          <span>{product.header1}</span>
           <br />
-          Фільми, малюнки та ігри немов оживають на дисплеї стандарту Full HD
-          (1920 x 1080).
+            {product.descr1}
         </div>
 
         <div className="info">
-          <span>Динаміки преміум-класу</span>
+          <span>{product.header2}</span>
           <br />
-          Стереофонічні динаміки JBL, що забезпечують розкішне звучання з
-          ефектом присутності, ідеально підходять для відео, ігор і музики.{" "}
+          {product.descr2}
         </div>
 
         <div className="info">
-          <span>Dolby Advanced Audio</span>
+          <span>{product.header3}</span>
           <br />
-          Dolby Advanced Audio — це технологія, завдяки якій на ноутбуці можна
-          відтворити кришталево чіткий просторовий звук за допомогою вбудованих
-          динаміків.{" "}
+          {product.descr3}
         </div>
       </div>
     </div>
