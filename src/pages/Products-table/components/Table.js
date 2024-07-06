@@ -1,9 +1,25 @@
 import './Table.css'
 import { MdEdit } from "react-icons/md";
 import { FaBoxArchive } from "react-icons/fa6";
+import { useState } from 'react';
+import AlertDialog from '../../../components/ModalWindow/Modal';
 
+const Table = ({products, deleteItem}) => {
+    const [open, setOpen] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState(null); 
 
-const Table = ({products}) => {
+    const handleClickOpen = (id) => {
+        setSelectedProduct(id);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setSelectedProduct(null); 
+    };
+    const handleDelete = () => {
+        deleteItem(selectedProduct, handleClose);
+    }
     return(
         <>
         <h1 className='Table-name'>Products</h1>
@@ -28,14 +44,17 @@ const Table = ({products}) => {
                         <td>{product.quantity}</td>
                         <td>{product.price}</td>
                         <td className='Edit'><MdEdit /></td>
-                        <td className='Delete'><FaBoxArchive /></td>
+                        <td className='Delete'><FaBoxArchive variant="outlined" 
+                        onClick={() => handleClickOpen(product.id)} /></td>
                     </tr>
                 ))}
             </tbody>
         </table>
-        
+        <AlertDialog open={open} handleClose={handleClose} handleDelete={handleDelete} />
         </>
     )
 }
 
 export default Table;
+
+// product={selectedProduct}
