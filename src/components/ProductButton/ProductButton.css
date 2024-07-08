@@ -9,6 +9,11 @@
     font-size: 16px;
     cursor: pointer;
 }
+/* .Button-add{
+    position: fixed; 
+    right: 25px; 
+} */
+
 
 .Button-logo-prev {
     position: absolute;

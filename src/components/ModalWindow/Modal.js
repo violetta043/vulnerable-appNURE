@@ -24,8 +24,8 @@ export default function AlertDialog({ open, handleClose, handleDelete }) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleDelete} autoFocus>
+          <Button style={{color: "green"}} onClick={handleClose}>Cancel</Button>
+          <Button style={{color: "red"}} onClick={handleDelete} autoFocus>
             Delete
           </Button>
         </DialogActions>

@@ -5,6 +5,7 @@ import Table from "./components/Table";
 import { useEffect, useState } from "react";
 import { API_URL } from "../../constants";
 
+
 const ProductTable = () => {
   const [products, setProducts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false); 
