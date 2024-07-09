@@ -1,4 +1,4 @@
-:root {
+ :root {
   --gray-900: #1a202c;
   --gray-800: #2d3748;
   --gray-700: #4a5568;
@@ -32,7 +32,7 @@
   --text-color: var(--gray-800);
   --focus-ring-color: var(--blue-500);
 }
-.modal-form{
+.modalForm{
   position: absolute;
 }
 .ModalFormCard{
@@ -48,17 +48,14 @@ h1 {
   margin-left: 25px;
 }
 
-label {
+.modal-form-lebel {
   font-weight: bold;
   font-size: 14px;
   display: flex;
   margin-top: 1rem;
   margin-left: 30px;
 }
-
-input[type="name"],
-input[type="text"],
-input[type="number"] {
+.modal-text-input  {
   padding: 0.65rem 0.5rem;
   font-size: 1rem;
   border: 2px solid var(--gray-200);
@@ -66,29 +63,27 @@ input[type="number"] {
   color: var(--gray-800);
   border-radius: 10px;
   margin-left: 25px;
-}
-
-input[type="text"],
-input[type="number"],
-textarea,
-select {
   width: 360px;
 }
 
-
-
-
-.desr-field{
+.descrField{
     width: 361px;
     height: 117px;
     margin-bottom: 18px;
+    padding: 0.65rem 0.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--gray-200);
+    background-color: var(--gray-100);
+    color: var(--gray-800);
+    border-radius: 10px;
+    margin-left: 25px;
 }
-.modal-form-buttons{
+.modalFormButtons{
   display: flex;
   justify-content: flex-end;
   margin-bottom: 10px;
   margin-right: 14px;
 }
-.cancle-button{
+.cancelButton{
   right: 10px;
-}
+} 

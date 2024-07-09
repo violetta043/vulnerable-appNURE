@@ -31,6 +31,9 @@ const ProductTable = () => {
       console.error("Error fetching data:", error);
     }
   };
+//////////////////////////
+
+
 
   const deleteProduct = async (id, handleClose) => {
     try {
