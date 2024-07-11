@@ -21,14 +21,19 @@ const Table = ({products, deleteItem, editItem}) => {
         setSelectedProduct(null); 
     };
 
-    const openModalForm = (title) => {
+    const openModalForm = (title, product) => {
         setModalTitle(title);
+        setSelectedProduct(product); 
         setModalFormOpen(true);
     }
     const closeModalForm = () => {
         setModalFormOpen(false);
     }
 
+    const handleEditSubmit = (values) => {
+        editItem(selectedProduct.id, values); 
+        closeModalForm(); 
+    }
 
     const handleDelete = () => {
         deleteItem(selectedProduct, handleClose);
@@ -57,7 +62,7 @@ const Table = ({products, deleteItem, editItem}) => {
                         <td>{product.name}</td>
                         <td>{product.quantity}</td>
                         <td>{product.price}</td>
-                        <td className='Edit'><MdEdit onClick={() => openModalForm("Edit product", editItem(product.id) ) }/></td>
+                        <td className='Edit'><MdEdit onClick={() => openModalForm("Edit product", product) }/></td>
                         <td className='Delete'><FaBoxArchive variant="outlined" 
                         onClick={() => handleClickOpen(product.id)} /></td>
                     </tr>
@@ -65,7 +70,8 @@ const Table = ({products, deleteItem, editItem}) => {
             </tbody>
         </table>
         <AlertDialog open={open} handleClose={handleClose} handleDelete={handleDelete} />
-        <ModalForm open={isModalFormOpen} handleClose={closeModalForm} title={modalTitle} onSubmit={editItem}/>
+        <ModalForm open={isModalFormOpen} handleClose={closeModalForm} title={modalTitle} onSubmit={handleEditSubmit}
+        initialValues={selectedProduct || {category: "", name: "", quantity: "", price: "", description: "",}}/>
         </>
     )
 }

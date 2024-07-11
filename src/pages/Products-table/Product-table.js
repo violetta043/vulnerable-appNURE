@@ -64,9 +64,9 @@ const ProductTable = () => {
     }
   };
 
-  const editProduct = async(productData) => {
+  const editProduct = async(id, productData) => {
     try {
-      await fetch(`${API_URL}/posts/${editId}`, {
+      await fetch(`${API_URL}/posts/${id}`, {
         method: 'PUT',
         headers: {
           "Content-Type": "application/json",
@@ -80,9 +80,6 @@ const ProductTable = () => {
       console.error("Error fetching data:", error);
     }
   }
-  const handleEdit = (id, productData) => {
-    setEditId(productData, id); 
-  }
   
   return (
     <div className="ProductTable">
@@ -90,7 +87,7 @@ const ProductTable = () => {
       <div className="Product-button">
         <ProductButton addItem={addProduct}/>
       </div>
-      <Table products={products} deleteItem={deleteProduct} editItem={handleEdit}/>
+      <Table products={products} deleteItem={deleteProduct} editItem={editProduct}/>
     </div>
   );
 };

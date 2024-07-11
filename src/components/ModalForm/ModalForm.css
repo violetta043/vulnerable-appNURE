@@ -87,6 +87,7 @@ h1 {
 }
 .cancelButton{
   right: 10px;
+  
 }
 .modal-form-error {
   color: var(--red);
@@ -95,6 +96,4 @@ h1 {
 .modal-form-error-input  {
   border-color: var(--red-500);
 }
-/* .modal-form-error-descrField{
-  border-color: var(--red-500);
-} */
+  
