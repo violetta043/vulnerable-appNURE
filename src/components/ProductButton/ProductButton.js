@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ModalForm from "../../components/ModalForm/ModalForm";
 
-const ProductButton = () => {
+const ProductButton = ({ addItem }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
@@ -35,7 +35,7 @@ const ProductButton = () => {
         </div>
         Add product
       </button>
-      <ModalForm open={open} handleClose={handleClose} title={modalTitle}/>
+      <ModalForm open={open} handleClose={handleClose} title={modalTitle} onSubmit={addItem}/>
     </>
   );
 };

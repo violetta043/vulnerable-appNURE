@@ -1,24 +1,28 @@
-import React, { useState } from "react";
-import { Modal, Box, Button, TextField } from "@mui/material";
-import { Formik, Form, Field, useField } from "formik";
+import React from "react";
+import { Modal, Button } from "@mui/material";
+import { Formik, Form, useField } from "formik";
 import "./ModalForm.css";
+import * as Yup from "yup";
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <>
-      <label htmlFor={props.id || props.name}>{label}</label>
-      <input className="text-input" {...field} {...props} />
+      <label  className="modal-form-lebel" htmlFor={props.id || props.name}>{label}</label>
+      <input className={`modal-text-input ${meta.touched && meta.error ? "modal-form-error-input"  : ""}`} 
+      {...field}
+      {...props}
+       />
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div className="modal-form-error">{meta.error}</div>
       ) : null}
     </>
   );
 };
 
-const ModalForm = ({ open, handleClose, title }) => {
+const ModalForm = ({ open, handleClose, title, onSubmit, editItem, addItem }) => {
   return (
-    <div className="modal-form">
+    <div className="modalForm">
       <Modal
         open={open}
         onClose={handleClose}
@@ -35,10 +39,24 @@ const ModalForm = ({ open, handleClose, title }) => {
               price: "",
               description: "",
             }}
-            onSubmit={(values) => {
-              console.log(values);
-              handleClose();
-            }}
+            validationSchema={Yup.object({
+              category: Yup.string()
+                .required("This field is required"),
+              name: Yup.string()
+                .required("This field is required"),
+              quantity: Yup.number()
+                .required("This field is required"),
+              price: Yup.number()
+                .required("This field is required"),
+              description: Yup.string()
+                .required("This field is required"),
+            })}
+            onSubmit={title === "Editproduct" ? editItem : addItem}
+            // onSubmit={(values) => {
+            //   onSubmit(values);
+            //   console.log(values);
+            //   handleClose();
+            // }}
           >
             <Form>
               <MyTextInput label="Category" name="category" type="text" />
@@ -49,11 +67,11 @@ const ModalForm = ({ open, handleClose, title }) => {
                 label="Description"
                 name="description"
                 type="text"
-                className="desr-field"
+                className="descrField"
               />
-              <div className="modal-form-buttons">
+              <div  className="modalFormButtons">
                 <Button
-                  className="cancle-button"
+                   className="cancelButton"
                   variant="contained"
                   color="primary"
                   onClick={handleClose}
