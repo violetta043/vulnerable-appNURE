@@ -3,10 +3,13 @@ import { MdEdit } from "react-icons/md";
 import { FaBoxArchive } from "react-icons/fa6";
 import { useState } from 'react';
 import AlertDialog from '../../../components/ModalWindow/Modal';
+import ModalForm from '../../../components/ModalForm/ModalForm';
 
 const Table = ({products, deleteItem}) => {
     const [open, setOpen] = useState(false);
+    const [isModalFormOpen, setModalFormOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null); 
+    const [modalTitle, setModalTitle] = useState("");
 
     const handleClickOpen = (id) => {
         setSelectedProduct(id);
@@ -17,9 +20,19 @@ const Table = ({products, deleteItem}) => {
         setOpen(false);
         setSelectedProduct(null); 
     };
+
+    const openModalForm = (title) => {
+        setModalTitle(title);
+        setModalFormOpen(true);
+    }
+    const closeModalForm = () => {
+        setModalFormOpen(false);
+    }
+
+
     const handleDelete = () => {
         deleteItem(selectedProduct, handleClose);
-    }
+    };
     return(
         <>
         <h1 className='Table-name'>Products</h1>
@@ -43,7 +56,7 @@ const Table = ({products, deleteItem}) => {
                         <td>{product.name}</td>
                         <td>{product.quantity}</td>
                         <td>{product.price}</td>
-                        <td className='Edit'><MdEdit /></td>
+                        <td className='Edit'><MdEdit onClick={() => openModalForm("Edit product")}/></td>
                         <td className='Delete'><FaBoxArchive variant="outlined" 
                         onClick={() => handleClickOpen(product.id)} /></td>
                     </tr>
@@ -51,10 +64,10 @@ const Table = ({products, deleteItem}) => {
             </tbody>
         </table>
         <AlertDialog open={open} handleClose={handleClose} handleDelete={handleDelete} />
+        <ModalForm open={isModalFormOpen} handleClose={closeModalForm} title={modalTitle}/>
         </>
     )
 }
 
 export default Table;
 
-// product={selectedProduct}

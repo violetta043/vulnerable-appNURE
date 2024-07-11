@@ -2,12 +2,24 @@ import "./ProductButton.css";
 import { GoPlus } from "react-icons/go";
 import { FaRegUser } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import ModalForm from "../../components/ModalForm/ModalForm";
 
 const ProductButton = () => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+
   const handleClick = () => {
     navigate("/product-preview");
   };
+ 
+  const handleOpen = (title) => {
+    setModalTitle(title);
+    setOpen(true);
+  }
+ 
+  const handleClose = () => setOpen(false);
   return (
     <>
       <button className="Button-prev" onClick={handleClick}>
@@ -17,12 +29,13 @@ const ProductButton = () => {
         Preview
       </button>
 
-      <button className="Button-add">
+      <button className="Button-add" onClick={() => handleOpen("Add product")}>
         <div className="Button-logo-add">
-          <GoPlus color="black" size="40px" />
+          <GoPlus color="black" size="40px"  />
         </div>
         Add product
       </button>
+      <ModalForm open={open} handleClose={handleClose} title={modalTitle}/>
     </>
   );
 };
