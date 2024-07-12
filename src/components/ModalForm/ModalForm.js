@@ -33,7 +33,7 @@ const ModalForm = ({ open, handleClose, title, onSubmit, initialValues }) => {
     price: Yup.number().required("This field is required"),
     description: Yup.string().required("This field is required"),
   });
-
+  
   return (
     <div className="modalForm">
       <Modal

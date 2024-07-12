@@ -32,6 +32,9 @@ const ProductTable = () => {
       console.error("Error fetching data:", error);
     }
   };
+//////////////////////////
+
+
 
   const addProduct = async (productData) => {
     try {
