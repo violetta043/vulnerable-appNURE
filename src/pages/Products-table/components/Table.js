@@ -10,6 +10,14 @@ const Table = ({products, deleteItem, editItem}) => {
     const [isModalFormOpen, setModalFormOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null); 
     const [modalTitle, setModalTitle] = useState("");
+    const emptyValues = {
+        category: "",
+        name: "",
+        quantity: "",
+        price: "", 
+        description: "",
+
+    }
 
     const handleClickOpen = (id) => {
         setSelectedProduct(id);
@@ -71,7 +79,7 @@ const Table = ({products, deleteItem, editItem}) => {
         </table>
         <AlertDialog open={open} handleClose={handleClose} handleDelete={handleDelete} />
         <ModalForm open={isModalFormOpen} handleClose={closeModalForm} title={modalTitle} onSubmit={handleEditSubmit}
-        initialValues={selectedProduct || {category: "", name: "", quantity: "", price: "", description: "",}}/>
+        initialValues={selectedProduct || emptyValues}/>
         </>
     )
 }
