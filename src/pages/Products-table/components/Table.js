@@ -5,11 +5,19 @@ import { useState } from 'react';
 import AlertDialog from '../../../components/ModalWindow/Modal';
 import ModalForm from '../../../components/ModalForm/ModalForm';
 
-const Table = ({products, deleteItem}) => {
+const Table = ({products, deleteItem, editItem}) => {
     const [open, setOpen] = useState(false);
     const [isModalFormOpen, setModalFormOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null); 
     const [modalTitle, setModalTitle] = useState("");
+    const emptyValues = {
+        category: "",
+        name: "",
+        quantity: "",
+        price: "", 
+        description: "",
+
+    }
 
     const handleClickOpen = (id) => {
         setSelectedProduct(id);
@@ -21,18 +29,24 @@ const Table = ({products, deleteItem}) => {
         setSelectedProduct(null); 
     };
 
-    const openModalForm = (title) => {
+    const openModalForm = (title, product) => {
         setModalTitle(title);
+        setSelectedProduct(product); 
         setModalFormOpen(true);
     }
     const closeModalForm = () => {
         setModalFormOpen(false);
     }
 
+    const handleEditSubmit = (values) => {
+        editItem(selectedProduct.id, values); 
+        closeModalForm(); 
+    }
 
     const handleDelete = () => {
         deleteItem(selectedProduct, handleClose);
     };
+    
     return(
         <>
         <h1 className='Table-name'>Products</h1>
@@ -56,7 +70,7 @@ const Table = ({products, deleteItem}) => {
                         <td>{product.name}</td>
                         <td>{product.quantity}</td>
                         <td>{product.price}</td>
-                        <td className='Edit'><MdEdit onClick={() => openModalForm("Edit product")}/></td>
+                        <td className='Edit'><MdEdit onClick={() => openModalForm("Edit product", product) }/></td>
                         <td className='Delete'><FaBoxArchive variant="outlined" 
                         onClick={() => handleClickOpen(product.id)} /></td>
                     </tr>
@@ -64,7 +78,8 @@ const Table = ({products, deleteItem}) => {
             </tbody>
         </table>
         <AlertDialog open={open} handleClose={handleClose} handleDelete={handleDelete} />
-        <ModalForm open={isModalFormOpen} handleClose={closeModalForm} title={modalTitle}/>
+        <ModalForm open={isModalFormOpen} handleClose={closeModalForm} title={modalTitle} onSubmit={handleEditSubmit}
+        initialValues={selectedProduct || emptyValues}/>
         </>
     )
 }

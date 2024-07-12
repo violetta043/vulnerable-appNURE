@@ -48,14 +48,15 @@ h1 {
   margin-left: 25px;
 }
 
-.modal-form-lebel {
+.modal-form-lebel  {
   font-weight: bold;
   font-size: 14px;
   display: flex;
   margin-top: 1rem;
   margin-left: 30px;
 }
-.modal-text-input  {
+
+.modal-text-input {
   padding: 0.65rem 0.5rem;
   font-size: 1rem;
   border: 2px solid var(--gray-200);
@@ -86,4 +87,12 @@ h1 {
 }
 .cancelButton{
   right: 10px;
-} 
+}
+.modal-form-error {
+  color: var(--red);
+  margin-left: 25px;
+}
+.modal-form-error-input  {
+  border-color: var(--red-500);
+}
+  

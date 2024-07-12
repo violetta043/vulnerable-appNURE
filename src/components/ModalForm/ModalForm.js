@@ -1,15 +1,23 @@
 import React from "react";
-import { Modal,  Button,  } from "@mui/material";
+import { Modal, Button } from "@mui/material";
 import { Formik, Form, useField } from "formik";
-import  "./ModalForm.css";
+import "./ModalForm.css";
+import * as Yup from "yup";
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-  
   return (
     <>
-      <label className="modal-form-lebel" htmlFor={props.id || props.name}>{label}</label>
-      <input className="modal-text-input" {...field} {...props} />
+      <label className="modal-form-lebel" htmlFor={props.id || props.name}>
+        {label}
+      </label>
+      <input
+        className={`modal-text-input ${
+          meta.touched && meta.error ? "modal-form-error-input" : ""
+        }`}
+        {...field}
+        {...props}
+      />
       {meta.touched && meta.error ? (
         <div className="modal-form-error">{meta.error}</div>
       ) : null}
@@ -17,7 +25,15 @@ const MyTextInput = ({ label, ...props }) => {
   );
 };
 
-const ModalForm = ({ open, handleClose, title, onSubmit }) => {
+const ModalForm = ({ open, handleClose, title, onSubmit, initialValues }) => {
+  const validationSchema = Yup.object({
+    category: Yup.string().required("This field is required"),
+    name: Yup.string().required("This field is required"),
+    quantity: Yup.number().required("This field is required"),
+    price: Yup.number().required("This field is required"),
+    description: Yup.string().required("This field is required"),
+  });
+  
   return (
     <div className="modalForm">
       <Modal
@@ -29,15 +45,12 @@ const ModalForm = ({ open, handleClose, title, onSubmit }) => {
         <div className="ModalFormCard">
           <h1>{title}</h1>
           <Formik
-            initialValues={{
-              category: "",
-              name: "",
-              quantity: "",
-              price: "",
-              description: "",
-            }}
-            onSubmit={(values) => {
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={(values, { resetForm }) => {
+              onSubmit(values);
               console.log(values);
+              resetForm(); 
               handleClose();
             }}
           >
@@ -45,7 +58,7 @@ const ModalForm = ({ open, handleClose, title, onSubmit }) => {
               <MyTextInput label="Category" name="category" type="text" />
               <MyTextInput label="Name" name="name" type="text" />
               <MyTextInput label="Quantity" name="quantity" type="number" />
-              <MyTextInput label="Price" name="price" type="text" />
+              <MyTextInput label="Price" name="price" type="number" />
               <MyTextInput
                 label="Description"
                 name="description"
@@ -56,12 +69,13 @@ const ModalForm = ({ open, handleClose, title, onSubmit }) => {
                 <Button
                   className="cancelButton"
                   variant="contained"
-                  color="primary"
                   onClick={handleClose}
+                  sx={{ backgroundColor: '#726969', color: 'white', '&:hover': { backgroundColor: 'darkgrey' } }}
                 >
                   Cancel
                 </Button>
-                <Button type="submit" variant="contained" color="primary">
+                <Button type="submit" variant="contained" 
+                sx={{ backgroundColor: 'red', color: 'white', '&:hover': { backgroundColor: 'darkred' } }}>
                   Submit
                 </Button>
               </div>

@@ -5,10 +5,17 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ModalForm from "../../components/ModalForm/ModalForm";
 
-const ProductButton = () => {
+const ProductButton = ({ addItem }) => {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
+  const [initialValues, setInitialValues] = useState({
+      category: "",
+      name: "",
+      quantity: "",
+      price: "",
+      description: "",
+  })
 
   const handleClick = () => {
     navigate("/product-preview");
@@ -16,10 +23,10 @@ const ProductButton = () => {
  
   const handleOpen = (title) => {
     setModalTitle(title);
-    setOpen(true);
+    setIsOpen(true);
   }
  
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setIsOpen(false);
   return (
     <>
       <button className="Button-prev" onClick={handleClick}>
@@ -35,7 +42,7 @@ const ProductButton = () => {
         </div>
         Add product
       </button>
-      <ModalForm open={open} handleClose={handleClose} title={modalTitle}/>
+      <ModalForm open={isOpen} handleClose={handleClose} title={modalTitle} onSubmit={addItem} initialValues={initialValues}/>
     </>
   );
 };
