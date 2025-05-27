@@ -1,5 +1,6 @@
 .Product-info {
-    height: 100vh;
+    /* height: 100vh; */
+    background-attachment: fixed;
     background-color: #fff;
     font-family: 'Inter-Medium' ;
 }

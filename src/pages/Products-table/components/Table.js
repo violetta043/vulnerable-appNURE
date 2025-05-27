@@ -58,6 +58,7 @@ const Table = ({products, deleteItem, editItem}) => {
                     <th>Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
+                    <th>Description</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -70,10 +71,20 @@ const Table = ({products, deleteItem, editItem}) => {
                         <td>{product.name}</td>
                         <td>{product.quantity}</td>
                         <td>{product.price}</td>
+
+                        <td>
+                            <div
+                                dangerouslySetInnerHTML={{ __html: product.description }}
+                                style={{ maxWidth: "200px", overflowWrap: "break-word" }}
+                            />
+                        </td>
+
                         <td className='Edit'><MdEdit onClick={() => openModalForm("Edit product", product) }/></td>
                         <td className='Delete'><FaBoxArchive variant="outlined" 
                         onClick={() => handleClickOpen(product.id)} /></td>
+                        
                     </tr>
+                    
                 ))}
             </tbody>
         </table>
