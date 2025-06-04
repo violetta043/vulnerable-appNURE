@@ -56,7 +56,7 @@ const Card = () => {
   };
   return (
     <div className="Card">
-      <img src={logo_login} className="Card-logo" />
+       <h1 className="Card-logo">Log in</h1>
 
       <div className="Input-login">
         <Input

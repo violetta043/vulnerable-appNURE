@@ -21,9 +21,6 @@ const ProductInfo = () => {
 
   return (
     <div className="Product-info">
-      <div className="Product-logo-wrapper">
-        <img src={logo_product} className="Product-logo" />
-      </div>
       <div className="Product-info-header">
         <IoIosArrowRoundBack size="60px" onClick={handleClick} />
         <div className="Product-info-name"> {product.name}</div>
